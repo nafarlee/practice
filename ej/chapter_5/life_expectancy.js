@@ -1,5 +1,10 @@
 var ancestors = JSON.parse(require('./ancestry'));
 
+var average = function(array) {
+	var plus = function (a, b) {return a + b; };
+	return array.reduce(plus) / array.length;
+};
+
 var groupBy = function (array, func) {
 	var group = {};
 	array.forEach(function(element) {
@@ -15,11 +20,16 @@ var groupBy = function (array, func) {
 	return group;
 };
 
-var isEven = function (num) {
-	if (num % 2 === 0) return "even";
-	else return "odd";
+var assignCentury = function (person) {
+	return Math.ceil(person.died / 100);
 };
 
-var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var getAge = function (person) {
+	return person.died - person.born;
+};
 
-console.log(groupBy(nums, isEven));
+var centuries = groupBy(ancestors, assignCentury);
+for (var key in centuries) {
+	var ages = centuries[key].map(getAge);
+	console.log(key + ": " + average(ages));
+}
