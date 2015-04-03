@@ -54,7 +54,7 @@ var directionNames = "n ne e se s sw w nw".split(" ");
 
 function BouncingCritter() {
   this.direction = randomElement(directionNames);
-};
+}
 
 BouncingCritter.prototype.act = function(view) {
   if (view.look(this.direction) != " ")
@@ -273,18 +273,32 @@ Plant.prototype.act = function(context) {
     return {type: "grow"};
 };
 
-function PlantEater() {
+function SmartPlantEater() {
   this.energy = 20;
+  this.previousMove = null;
 }
-PlantEater.prototype.act = function(context) {
-  var space = context.find(" ");
-  if (this.energy > 60 && space)
+
+SmartPlantEater.prototype.act = function(context) {
+  var space = context.find(' ');
+
+  if (this.energy > 70 && space) {
     return {type: "reproduce", direction: space};
+  }
+
   var plant = context.find("*");
-  if (plant)
+  if (plant && this.energy <= 40) {
     return {type: "eat", direction: plant};
-  if (space)
+  }
+
+  var openSpaces = context.findAll(' ');
+  if (this.previousMove && openSpaces.indexOf(this.previousMove) > -1) {
+	  return {type: "move", direction: this.previousMove};
+  }
+
+  if (space) {
+	  this.previousMove = space;
     return {type: "move", direction: space};
+	}
 };
 
 var valley = new LifelikeWorld(
@@ -301,6 +315,6 @@ var valley = new LifelikeWorld(
    "##****     ###***       *###",
    "############################"],
   {"#": Wall,
-   "O": PlantEater,
+   "O": SmartPlantEater,
    "*": Plant}
 );
