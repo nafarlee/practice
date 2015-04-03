@@ -281,17 +281,17 @@ function SmartPlantEater() {
 SmartPlantEater.prototype.act = function(context) {
 	var space = context.find(' ');
 
-	if (this.energy > 70 && space) {
+	if (this.energy > 50 && space) {
 		return {type: "reproduce", direction: space};
 	}
 
 	var plant = context.find("*");
-	if (plant && this.energy <= 40) {
+	if (plant && this.energy < 45) {
 		return {type: "eat", direction: plant};
 	}
 
 	var openSpaces = context.findAll(' ');
-	if (this.previousMove && openSpaces.indexOf(this.previousMove) > -1) {
+	if (this.previousMove !== null && openSpaces.indexOf(this.previousMove) > -1) {
 		return {type: "move", direction: this.previousMove};
 	}
 
@@ -303,12 +303,13 @@ SmartPlantEater.prototype.act = function(context) {
 
 function Tiger() {
 	this.energy = 50;
+	this.previousMove = null;
 }
 
 Tiger.prototype.act = function(context) {
 	var space = context.find(' ');
 
-	if (this.energy > 90 && space) {
+	if (this.energy > 70 && space) {
 		return {type: "reproduce", direction: space};
 	}
 
@@ -318,7 +319,7 @@ Tiger.prototype.act = function(context) {
 	}
 
 	var openSpaces = context.findAll(' ');
-	if (this.previousMove && openSpaces.indexOf(this.previousMove) > -1) {
+	if (this.previousMove !== null && openSpaces.indexOf(this.previousMove) > -1) {
 		return {type: "move", direction: this.previousMove};
 	}
 
