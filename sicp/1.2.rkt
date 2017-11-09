@@ -1,4 +1,4 @@
-#lang planet neil/sicp
+#lang sicp
 
 (/ (+ 5
       4
