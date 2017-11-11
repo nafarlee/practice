@@ -1,4 +1,4 @@
-#lang planet neil/sicp
+#lang sicp
 
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
