@@ -1,7 +1,8 @@
 (ns cbt.core
-  (require [cbt.1-1 :refer [main]])
+  (require [cbt.1-1])
+  (require [cbt.1-2 :refer [main]])
   (:gen-class))
 
 (defn -main
   [& args]
-  (main))
+  (println (main 10)))
