@@ -3,10 +3,9 @@
   (:require [cbt.1-2])
   (:require [cbt.1-3])
   (:require [cbt.1-4 :refer [mapset]])
+  (:require [cbt.1-5])
   (:gen-class))
 
 (defn -main
   [& args]
-  (println
-   (mapset inc
-           [1 1 2 2])))
+  (println (cbt.1-5/even-better-symmetrize-body-parts)))
