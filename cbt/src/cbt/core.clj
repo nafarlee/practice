@@ -5,8 +5,10 @@
   (:require [cbt.3-4])
   (:require [cbt.3-5])
   (:require [cbt.3-6])
+  (:require [cbt.4-1])
   (:gen-class))
 
 (defn -main
   [& args]
-  (println (cbt.3-6/best-symmetrize-body-parts 100)))
+  (-> (cbt.4-1/main)
+      println))
