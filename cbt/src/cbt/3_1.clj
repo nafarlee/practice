@@ -1,4 +1,4 @@
-(ns cbt.1-1)
+(ns cbt.3-1)
 
 (defn main []
   (println (str "Yare " "yare" ", " "daze"))

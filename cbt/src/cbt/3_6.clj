@@ -1,4 +1,4 @@
-(ns cbt.1-5)
+(ns cbt.3-6)
 
 (def asym-hobbit-body-parts [{:name "head" :size 3}
                              {:name "left-eye" :size 1}
@@ -25,15 +25,16 @@
                           #"^left-(.*)"
                           (str "$1-" number)))
 
-(defn matching-parts [part]
+(defn matching-parts [part num-match]
   (let [part-name (:name part)
-        part-size (:size part)]
-    (->> (range 1 6)
+        part-size (:size part)
+        n (inc num-match)]
+    (->> (range 1 n)
          (map #(hash-map :name (numbered-part part-name %)
                          :size part-size)))))
 
-(defn even-better-symmetrize-body-parts []
+(defn best-symmetrize-body-parts [n]
   (->> asym-hobbit-body-parts
-       (reduce #(concat %1 (matching-parts %2))
+       (reduce #(concat %1 (matching-parts %2 n))
                '())
        set))

@@ -1,4 +1,4 @@
-(ns cbt.1-4)
+(ns cbt.3-4)
 
 (defn mapset [f vect]
   (set (map f vect)))
