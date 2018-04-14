@@ -7,9 +7,9 @@
   (:require [cbt.3-6])
   (:require [cbt.4-1])
   (:require [cbt.4-2])
+  (:require [cbt.4-3])
   (:gen-class))
 
 (defn -main
   [& args]
-  (-> (cbt.4-1/main)
-      println))
+  (println "Hello, world!"))
