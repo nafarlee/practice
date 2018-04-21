@@ -15,6 +15,7 @@
   (:require [cbt.5-4])
   (:require [cbt.5-5])
   (:require [cbt.7-1])
+  (:require [cbt.7-2])
   (:gen-class))
 
 (defn -main
