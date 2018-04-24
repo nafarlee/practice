@@ -1,5 +1,15 @@
 (ns cbt.7-2)
 
+(defn op-matches-precedent?
+  [precedence op]
+  (or
+    (and (or (= op '/)
+             (= op '*))
+         (= precedence 2))
+    (and (or (= op '+)
+             (= op '-))
+         (= precedence 1))))
+
 (defn infix
   [expr]
   (loop [before '()
@@ -22,13 +32,3 @@
         (recur (concat before (list x op))
                (conj xs y)
                precedence))))
-
-(defn op-matches-precedent?
-  [precedence op]
-  (or 
-    (and (or (= op '/)
-             (= op '*))
-         (= precedence 2))
-    (and (or (= op '+)
-             (= op '-))
-         (= precedence 1))))
