@@ -20,6 +20,7 @@
   (:require [cbt.8-2])
   (:require [cbt.8-3])
   (:require [cbt.9-1])
+  (:require [cbt.9-2])
   (:gen-class))
 
 (defn -main
