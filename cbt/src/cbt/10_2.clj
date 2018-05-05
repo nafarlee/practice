@@ -2,7 +2,7 @@
 
 (def url "https://www.braveclojure.com/random-quote")
 
-(def get-quote
+(defn get-quote
   []
   (future (slurp url)))
 
