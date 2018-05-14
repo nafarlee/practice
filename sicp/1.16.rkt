@@ -9,4 +9,4 @@
 (define (expt-iter-rec b n a)
   (cond ((= n 0) a)
         ((even? n) (expt-iter-rec (* b b) (/ n 2) a))
-        (else (expt-iter-rec b (- n 1) (* b a)))))
+        (else (expt-iter-rec b (dec n) (* b a)))))
