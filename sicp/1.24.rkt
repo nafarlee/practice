@@ -142,4 +142,4 @@
 ; 13 / 16 * 100 ~= 81.25
 
 ; Based on this data, the increase in computation time required from the first trial to the second
-; upholds the ratio that is to be expected from a log(n) process.
+; upholds the ratio that is to be expected from a O(logn) process.
