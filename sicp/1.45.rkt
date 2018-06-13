@@ -28,3 +28,11 @@
     f
     (repeated (compose f f)
               (dec n))))
+
+(define (log2 x) (/ (log x) (log 2)))
+
+(define (nth-root x n)
+  (define damper (repeated average-damp (floor (log2 n))))
+  (fixed-point
+   (damper (lambda (y) (/ x (expt y (dec n)))))
+   1.0))
