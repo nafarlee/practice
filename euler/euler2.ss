@@ -1,5 +1,6 @@
 #!/usr/bin/env gxi
 (import (only-in :std/iter for for/fold yield in-coroutine iter-end iter))
+(export main)
 
 (def (fib)
   (in-coroutine
